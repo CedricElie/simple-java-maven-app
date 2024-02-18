@@ -1,9 +1,10 @@
 pipeline {
     agent any
     stages {
-        stage('Build') { 
+        stage('Build Artifact') { 
             steps {
-                sh 'ls' 
+                sh 'mvn clean package -DskipTest=true'
+                archive 'target/*.jar'
             }
         }
     }
